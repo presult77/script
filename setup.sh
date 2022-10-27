@@ -196,7 +196,7 @@ gg="AM"
 fi
 curl -sS ifconfig.me > /etc/myipvps
 echo " "
-echo "=====================-[ OTTIN NETWORK ]-===================="
+echo "=====================-[ NARAVPN ]-===================="
 echo ""
 echo "------------------------------------------------------------"
 echo ""
@@ -218,7 +218,7 @@ echo "   - Trojan WS		: 443" | tee -a log-install.txt
 echo "   - Trojan Go		: 443" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "   >>> Server Information & Other Features"  | tee -a log-install.txt
-echo "   - Timezone		: Asia/Kuala_Lumpur (GMT +08)"  | tee -a log-install.txt
+echo "   - Timezone		: Asia/Jakarta (GMT +08)"  | tee -a log-install.txt
 echo "   - Fail2Ban		: [ON]"  | tee -a log-install.txt
 echo "   - Dflate		: [ON]"  | tee -a log-install.txt
 echo "   - IPtables		: [ON]"  | tee -a log-install.txt
@@ -236,7 +236,7 @@ echo ""
 echo ""
 echo "------------------------------------------------------------"
 echo ""
-echo "===============-[ Script Created By THE KILL ]-==============="
+echo "===============-[ Script Development By NaraVPN ]-==============="
 echo -e ""
 echo ""
 echo "" | tee -a log-install.txt
