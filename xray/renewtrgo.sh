@@ -1,5 +1,4 @@
 #!/bin/bash
-# SL
 # ==========================================
 # Color
 RED='\033[0;31m'
@@ -53,4 +52,4 @@ echo "============================"
 echo "Username : $user"
 echo "Expired  : $exp4"
 echo "=========================="
-echo "Script Mod By ADAM SIJA"
+echo "THANKS FOR USING OUR SERVICE"

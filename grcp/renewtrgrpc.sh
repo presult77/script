@@ -1,5 +1,4 @@
 #!/bin/bash
-# My Telegram : https://t.me/IzhanV
 # ==========================================
 #########################
 MYIP=$(curl -sS ipv4.icanhazip.com)

@@ -46,7 +46,7 @@ trojanlink1="trojan://${uuid}@${domain}:${tr}?mode=gun&security=tls&type=grpc&se
 trojanlink="trojan://${uuid}@isi_bug_disini:${tr}?path=%2Ftrojan-ws&security=tls&host=${domain}&type=ws&sni=${domain}#${user}"
 clear
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\E[0;41;36m           Trial TROJAN           \E[0m"
+echo -e "\E[0;41;36m           TROJAN Account           \E[0m"
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "Remarks      : ${user}"
 echo -e "Host/IP      : ${domain}"
@@ -62,6 +62,7 @@ echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━�
 echo -e "Expired On   : $exp"
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo ""
+echo -e "THANKS FOR USING OUR SERVICE"
 read -n 1 -s -r -p "Press any key to back on menu"
 
 menu

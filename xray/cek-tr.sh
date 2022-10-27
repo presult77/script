@@ -51,5 +51,5 @@ oth=$(cat /tmp/other.txt | sort | uniq | nl)
 echo "other";
 echo "$oth";
 echo "-----------------------------------------"
-echo "Script By Thekill"
+echo "Script By NARAVPN"
 rm -rf /tmp/other.txt

@@ -632,7 +632,6 @@ wget -O deltrgo "https://raw.githubusercontent.com/presult77/script/main/xray/de
 wget -O renewtrgo "https://raw.githubusercontent.com/presult77/script/main/xray/renewtrgo.sh" && chmod +x renewtrgo
 wget -O cektrgo "https://raw.githubusercontent.com/presult77/script/main/xray/cektrgo.sh" && chmod +x cektrgo
 
-
 sleep 1
 yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
 yellow "xray/Vmess"
