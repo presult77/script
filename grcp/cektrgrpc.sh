@@ -1,5 +1,4 @@
 #!/bin/bash
-# My Telegram : https://t.me/IzhanV
 # ==========================================
 # Color
 RED='\033[0;31m'
@@ -55,5 +54,5 @@ oth=$(cat /tmp/other.txt | sort | uniq | nl)
 echo "other";
 echo "$oth";
 echo "-----------------------------------------"
-echo "Script By Izhanworks"
+echo "Script Development By NaraVPN"
 rm -rf /tmp/other.txt

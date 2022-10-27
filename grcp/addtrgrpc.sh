@@ -1,5 +1,4 @@
 #!/bin/bash
-# My Telegram : https://t.me/izhanV
 # ==========================================
 DF='\e[39m'
 Bold='\e[1m'

@@ -1,5 +1,4 @@
 #!/bin/bash
-# My Telegram : https://t.me/IzhanV
 # ==========================================
 # Color
 RED='\033[0;31m'
@@ -48,4 +47,4 @@ echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━�
 echo "Username  : $user"
 echo "Expired   : $exp"
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo "Script By IzhanV"
+echo "Script Development By NaraVPN"

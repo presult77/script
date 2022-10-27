@@ -9,13 +9,13 @@ sleep 1
 mkdir /etc/rare/xray/grpc
 cd /usr/bin
 
-wget -O port-trgrpc "https://raw.githubusercontent.com/izhanworks/addongrpc/main/port-trgrpc.sh"
+wget -O port-trgrpc "https://raw.githubusercontent.com/presult77/script/main/grcp/port-trgrpc.sh"
 chmod +x port-trgrpc
 
-wget -O port-grpc "https://raw.githubusercontent.com/izhanworks/addongrpc/main/port-grpc.sh"
+wget -O port-grpc "https://raw.githubusercontent.com/presult77/script/main/grcp/port-grpc.sh"
 chmod +x port-grpc 
 
-wget -O menu-grpc "https://raw.githubusercontent.com/izhanworks/addongrpc/main/menu-grpc.sh"
+wget -O menu-grpc "https://raw.githubusercontent.com/presult77/script/main/grcp/menu-grpc.sh"
 chmod +x menu-grpc
 read -p "Press Enter to Continue : "
 sleep 1
@@ -253,15 +253,15 @@ systemctl enable trgrpc.service
 systemctl start trgrpc.service
 systemctl restart xray.service
 
-wget -O addgrpc "https://raw.githubusercontent.com/izhanworks/addongrpc/main/addgrpc.sh"
-wget -O delgrpc "https://raw.githubusercontent.com/izhanworks/addongrpc/main/delgrpc.sh"
-wget -O cekgrpc "https://raw.githubusercontent.com/izhanworks/addongrpc/main/cekgrpc.sh"
-wget -O renewgrpc "https://raw.githubusercontent.com/izhanworks/addongrpc/main/renewgrpc.sh"
+wget -O addgrpc "https://raw.githubusercontent.com/presult77/script/main/grcp/addgrpc.sh"
+wget -O delgrpc "https://raw.githubusercontent.com/presult77/script/main/grcp/delgrpc.sh"
+wget -O cekgrpc "https://raw.githubusercontent.com/presult77/script/main/grcp/cekgrpc.sh"
+wget -O renewgrpc "https://raw.githubusercontent.com/presult77/script/main/grcp/renewgrpc.sh"
 
-wget -O addtrgrpc "https://raw.githubusercontent.com/izhanworks/addongrpc/main/addtrgrpc.sh"
-wget -O deltrgrpc "https://raw.githubusercontent.com/izhanworks/addongrpc/main/deltrgrpc.sh"
-wget -O cektrgrpc "https://raw.githubusercontent.com/izhanworks/addongrpc/main/cektrgrpc.sh"
-wget -O renewtrgrpc "https://raw.githubusercontent.com/izhanworks/addongrpc/main/renewtrgrpc.sh"
+wget -O addtrgrpc "https://raw.githubusercontent.com/presult77/script/main/grcp/addtrgrpc.sh"
+wget -O deltrgrpc "https://raw.githubusercontent.com/presult77/script/main/grcp/deltrgrpc.sh"
+wget -O cektrgrpc "https://raw.githubusercontent.com/presult77/script/main/grcp/cektrgrpc.sh"
+wget -O renewtrgrpc "https://raw.githubusercontent.com/presult77/script/main/grcp/renewtrgrpc.sh"
 
 chmod +x addgrpc
 chmod +x delgrpc
