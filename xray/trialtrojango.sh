@@ -28,7 +28,7 @@ echo -e "========================="
 echo -e "Link TrGo  			: ${link}"
 echo -e "Link TrGo (v2rayNG)	: ${link1}"
 echo -e "========================="
-echo -e "Script Mod By ADAM SIJA"
+echo -e "THANKS FOR USING OUR SERVICE"
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
 
