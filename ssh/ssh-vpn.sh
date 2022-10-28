@@ -224,7 +224,6 @@ wget -O menu-trojan "https://raw.githubusercontent.com/presult77/script/main/men
 wget -O menu-set "https://raw.githubusercontent.com/presult77/script/main/menu/menu-set.sh"
 wget -O menu-domain "https://raw.githubusercontent.com/presult77/script/main/menu/menu-domain.sh"
 wget -O add-host "https://raw.githubusercontent.com/presult77/script/main/ssh/add-host.sh"
-wget -O port-change "https://raw.githubusercontent.com/presult77/script/main/port/port-change.sh"
 wget -O certv2ray "https://raw.githubusercontent.com/presult77/script/main/xray/certv2ray.sh"
 wget -O menu-webmin "https://raw.githubusercontent.com/presult77/script/main/menu/menu-webmin.sh"
 wget -O speedtest "https://raw.githubusercontent.com/presult77/script/main/ssh/speedtest_cli.py"
@@ -246,7 +245,6 @@ chmod +x menu-trojan
 chmod +x menu-set
 chmod +x menu-domain
 chmod +x add-host
-chmod +x port-change
 chmod +x certv2ray
 chmod +x menu-webmin
 chmod +x speedtest
