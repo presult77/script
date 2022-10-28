@@ -39,7 +39,6 @@ touch /etc/v2ray/domain
 touch /etc/xray/scdomain
 touch /etc/v2ray/scdomain
 
-
 echo -e "[ ${tyblue}NOTES${NC} ] Before we go.. "
 sleep 1
 echo -e "[ ${tyblue}NOTES${NC} ] I need check your headers first.."
@@ -89,7 +88,6 @@ if ! dpkg -s $ReqPKG  >/dev/null 2>&1; then
 else
   clear
 fi
-
 
 secs_to_human() {
     echo "Installation time : $(( ${1} / 3600 )) hours $(( (${1} / 60) % 60 )) minute's $(( ${1} % 60 )) seconds"
