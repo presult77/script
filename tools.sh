@@ -30,7 +30,7 @@ sudo apt install -y screen curl jq bzip2 gzip coreutils rsyslog iftop \
  htop zip unzip net-tools sed gnupg gnupg1 \
  bc sudo apt-transport-https build-essential dirmngr libxml-parser-perl neofetch screenfetch git lsof \
  openssl easy-rsa fail2ban tmux \
- vnstat \
+ dbus vnstat \
  libsqlite3-dev \
  socat cron bash-completion ntpdate xz-utils sudo apt-transport-https \
  gnupg2 dnsutils lsb-release chrony
