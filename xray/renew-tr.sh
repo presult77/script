@@ -9,18 +9,15 @@ green() { echo -e "\\033[32;1m${*}\\033[0m"; }
 red() { echo -e "\\033[31;1m${*}\\033[0m"; }
 
 clear
-NUMBER_OF_CLIENTS=$(grep -c -E "^#! " "/etc/xray/config.json")
-	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
+
+	read -rp "Input Username : " user
+    read -p "Expired (days): " masaaktif
+    
+    CLIENT_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
+	if [[ ${CLIENT_EXISTS} == '0' ]]; then
 		exit
 	fi
 
-	clear
-
-	read -rp "Input Username : " user
-    if [ -z $user ]; then
-    menu
-    else
-    read -p "Expired (days): " masaaktif
     exp=$(grep -wE "^#! $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
     now=$(date +%Y-%m-%d)
     d1=$(date -d "$exp" +%s)

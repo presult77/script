@@ -12,31 +12,16 @@ LIGHT='\033[0;37m'
 # ==========================================
 # Getting
 
-clear
-NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/trojan-go/akun.conf")
-	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
-		clear
-		echo ""
-		echo "You have no existing clients!"
-		exit 1
-	fi
-
 	clear
-	echo ""
-	echo "Select the existing client you want to renew"
-	echo " Press CTRL+C to return"
-	echo -e "==============================="
-	grep -E "^### " "/etc/trojan-go/akun.conf" | cut -d ' ' -f 2-3 | nl -s ') '
-	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
-		if [[ ${CLIENT_NUMBER} == '1' ]]; then
-			read -rp "Select one client [1]: " CLIENT_NUMBER
-		else
-			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
-		fi
-	done
-read -p "Expired (Days) : " masaaktif
-user=$(grep -E "^### " "/etc/trojan-go/akun.conf" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
-exp=$(grep -E "^### " "/etc/trojan-go/akun.conf" | cut -d ' ' -f 3 | sed -n "${CLIENT_NUMBER}"p)
+	read -rp "Input Username : " user
+	read -p "Expired (Days) : " masaaktif
+
+    CLIENT_EXISTS=$(grep -w $user /etc/trojan-go/akun.conf | wc -l)
+	if [[ ${CLIENT_EXISTS} == '0' ]]; then
+		exit
+	fi	
+
+exp=$(grep -E "^### $user" "/etc/trojan-go/akun.conf" | cut -d ' ' -f 3 | sort | uniq)
 now=$(date +%Y-%m-%d)
 d1=$(date -d "$exp" +%s)
 d2=$(date -d "$now" +%s)

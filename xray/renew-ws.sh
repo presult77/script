@@ -17,17 +17,14 @@ biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 
 MYIP=$(curl -sS ipv4.icanhazip.com)
 clear
-NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
-	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
-		clear
+	read -rp "Input Username : " user
+    read -p "Expired (days): " masaaktif
+
+	CLIENT_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
+	if [[ ${CLIENT_EXISTS} == '0' ]]; then
 		exit
 	fi
-
-	read -rp "Input Username : " user
-    if [ -z $user ]; then
-    exit
-    else
-    read -p "Expired (days): " masaaktif
+	
     exp=$(grep -E "^### $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
     now=$(date +%Y-%m-%d)
     d1=$(date -d "$exp" +%s)
@@ -38,14 +35,14 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     sed -i "/#& $user/c\#& $user $exp4" /etc/xray/config.json
 
 	clear
-	echo ""
-	echo "==============================="
-	echo "  Xray/Vmess Account Renewed  "
-	echo "==============================="
-	echo "Username  : $user"
-	echo "Expired   : $exp4"
-	echo "==============================="
-	echo "THANKS FOR USING OUR SERVICE"
+	echo "" | tee -a /etc/log-create-user.log
+	echo "===============================" | tee -a /etc/log-create-user.log
+	echo "  Xray/Vmess Account Renewed  " | tee -a /etc/log-create-user.log
+	echo "===============================" | tee -a /etc/log-create-user.log
+	echo "Username  : $user" | tee -a /etc/log-create-user.log
+	echo "Expired   : $exp4" | tee -a /etc/log-create-user.log
+	echo "===============================" | tee -a /etc/log-create-user.log
+	echo "THANKS FOR USING OUR SERVICE" | tee -a /etc/log-create-user.log
 
 	sleep 1
 	service cron restart

@@ -13,18 +13,14 @@ LIGHT='\033[0;37m'
 # Getting
 
 clear
+	read -rp "Input Username : " user
+    read -p "Expired (days): " masaaktif
 
-NUMBER_OF_CLIENTS=$(grep -c -E "^#& " "/etc/xray/config.json")
-	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
-        exit
+    CLIENT_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
+	if [[ ${CLIENT_EXISTS} == '0' ]]; then
+		exit
 	fi
 
-
-	read -rp "Input Username : " user
-    if [ -z $user ]; then
-    exit
-    else
-    read -p "Expired (days): " masaaktif
     exp=$(grep -wE "^#& $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
     now=$(date +%Y-%m-%d)
     d1=$(date -d "$exp" +%s)
