@@ -213,8 +213,6 @@ fi
 #   swsdrop="${RED}  Not Running ${NC}  ( Error )${NC}"
 #fi
 
-
-
 # TOTAL RAM
 total_ram=` grep "MemTotal: " /proc/meminfo | awk '{ print $2}'`
 totalram=$(($total_ram/1024))
