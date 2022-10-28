@@ -28,7 +28,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     exit
     else
     read -p "Expired (days): " masaaktif
-    exp=$(grep -wE "^#& $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
+    exp=$(grep -E "^### $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
     now=$(date +%Y-%m-%d)
     d1=$(date -d "$exp" +%s)
     d2=$(date -d "$now" +%s)
@@ -46,7 +46,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
 	echo "Expired   : $exp4"
 	echo "==============================="
 	echo "THANKS FOR USING OUR SERVICE"
-	
+
 	sleep 1
 	service cron restart
 	systemctl restart xray > /dev/null 2>&1

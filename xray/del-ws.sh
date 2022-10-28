@@ -26,7 +26,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     exit
     else
 
-	exp=$(grep -wE "^#& $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
+	exp=$(grep -E "^### $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
 	sed -i "/^### $user $exp/,/^},{/d" /etc/xray/config.json
 	sed -i "/^### $user $exp/,/^},{/d" /etc/xray/config.json
 	rm -f /etc/xray/vmess-$user-tls.json /etc/xray/vmess-$user-nontls.json
