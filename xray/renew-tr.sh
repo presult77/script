@@ -30,15 +30,15 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^#! " "/etc/xray/config.json")
     exp4=`date -d "$exp3 days" +"%Y-%m-%d"`
     sed -i "/#! $user/c\#! $user $exp4" /etc/xray/config.json
     clear
-    echo -e "━━━━━━━━━━━━━━━━━━"
+    echo -e "━━━━━━━━━━━━━━━━━━━━━"
     echo " Trojan Account Was Successfully Renewed"
-    echo -e "━━━━━━━━━━━━━━━━━━"
+    echo -e "━━━━━━━━━━━━━━━━━━━━━"
     echo ""
     echo " Client Name : $user"
     echo " Expired On  : $exp4"
     echo ""
     echo "THANKS FOR USING OUR SERVICE"
-    echo -e "━━━━━━━━━━━━━━━━━━"
+    echo -e "━━━━━━━━━━━━━━━━━━━━━"
     echo ""
     sleep 1
     systemctl restart xray > /dev/null 2>&1
