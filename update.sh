@@ -36,3 +36,15 @@ wget -O del-tr "https://raw.githubusercontent.com/presult77/script/main/xray/del
 wget -O renew-tr "https://raw.githubusercontent.com/presult77/script/main/xray/renew-tr.sh" && chmod +x renew-tr
 wget -O cek-tr "https://raw.githubusercontent.com/presult77/script/main/xray/cek-tr.sh" && chmod +x cek-tr
 wget -O menu "https://raw.githubusercontent.com/presult77/script/main/menu/menu.sh" && chmod +x menu
+
+# trgo
+rm /usr/local/sbin/addtrgo
+rm /usr/local/sbin/trialtrojango
+rm /usr/local/sbin/deltrgo
+rm /usr/local/sbin/renewtrgo
+rm /usr/local/sbin/cek-trgo
+wget -O addtrgo "https://raw.githubusercontent.com/presult77/script/main/xray/addtrgo.sh" && chmod +x addtrgo
+wget -O trialtrojango "https://raw.githubusercontent.com/presult77/script/main/xray/trialtrojango.sh" && chmod +x trialtrojango
+wget -O deltrgo "https://raw.githubusercontent.com/presult77/script/main/xray/deltrgo.sh" && chmod +x deltrgo
+wget -O renewtrgo "https://raw.githubusercontent.com/presult77/script/main/xray/renewtrgo.sh" && chmod +x renewtrgo
+wget -O cektrgo "https://raw.githubusercontent.com/presult77/script/main/xray/cektrgo.sh" && chmod +x cektrgo

@@ -23,7 +23,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/trojan-go/akun.conf")
 	read -rp "Input Username : " user
     if [ -z $user ]; then
     exit
-    else
+    fi
 
 exp=$(grep -E "^### $user" "/etc/trojan-go/akun.conf" | cut -d ' ' -f 3 | sort | uniq)
 sed -i "/^### $user $exp/d" /etc/trojan-go/akun.conf
