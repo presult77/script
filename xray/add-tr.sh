@@ -30,26 +30,26 @@ sed -i '/#trojanws$/a\#! '"$user $exp"'\
 sed -i '/#trojangrpc$/a\#! '"$user $exp"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
 
-trojanlink1="trojan://${uuid}@${domain}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=bug.com#${user}"
-trojanlink="trojan://${uuid}@isi_bug_disini:${tr}?path=%2Ftrojan-ws&security=tls&host=${domain}&type=ws&sni=${domain}#${user}"
+trojanlink1="trojan://${uuid}@${domain}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=${domain}#${user}"
+trojanlink="trojan://${uuid}@${domain}:${tr}?path=%2Ftrojan-ws&security=tls&host=${domain}&type=ws&sni=${domain}#${user}"
 clear
-echo -e "━━━━━━━━━━━━━━━━━━━━━"
-echo -e "TROJAN ACCOUNT"
-echo -e "━━━━━━━━━━━━━━━━━━━━━"
-echo -e "Remarks      : ${user}"
-echo -e "Host/IP      : ${domain}"
-echo -e "Port         : ${tr}"
-echo -e "Key          : ${uuid}"
-echo -e "Path         : /trojan-ws"
-echo -e "ServiceName  : trojan-grpc"
-echo -e "━━━━━━━━━━━━━━━━━━━━━"
-echo -e "Expired On   : $exp"
-echo -e "━━━━━━━━━━━━━━━━━━━━━"
-echo -e "Link WS      : ${trojanlink}"
-echo -e "━━━━━━━━━━━━━━━━━━━━━"
-echo -e "Link GRPC    : ${trojanlink1}"
-echo -e "━━━━━━━━━━━━━━━━━━━━━"
-echo ""
-echo -e "THANKS FOR USING OUR SERVICE"
+echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
+echo -e "TROJAN ACCOUNT" | tee -a /etc/log-create-user.log
+echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
+echo -e "Remarks      : ${user}" | tee -a /etc/log-create-user.log
+echo -e "Host/IP      : ${domain}" | tee -a /etc/log-create-user.log
+echo -e "Port         : ${tr}" | tee -a /etc/log-create-user.log
+echo -e "Key          : ${uuid}" | tee -a /etc/log-create-user.log
+echo -e "Path         : /trojan-ws" | tee -a /etc/log-create-user.log
+echo -e "ServiceName  : trojan-grpc" | tee -a /etc/log-create-user.log
+echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
+echo -e "Expired On   : $exp" | tee -a /etc/log-create-user.log
+echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
+echo -e "Link WS      : ${trojanlink}" | tee -a /etc/log-create-user.log
+echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
+echo -e "Link GRPC    : ${trojanlink1}" | tee -a /etc/log-create-user.log
+echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
+echo "" | tee -a /etc/log-create-user.log
+echo -e "THANKS FOR USING OUR SERVICE" | tee -a /etc/log-create-user.log
 sleep 1
 systemctl restart xray > /dev/null 2>&1

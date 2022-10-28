@@ -33,7 +33,7 @@ sed -i '/#trojangrpc$/a\#! '"$user $exp"'\
 trojanlink1="trojan://${uuid}@${domain}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=bug.com#${user}"
 trojanlink="trojan://${uuid}@isi_bug_disini:${tr}?path=%2Ftrojan-ws&security=tls&host=${domain}&type=ws&sni=${domain}#${user}"
 clear
-echo -e "━━━━━━━━━━━━━━━━━━━━━━━━"
+echo -e "━━━━━━━━━━━━━━━━━━━━━"
 echo -e "TRIAL TROJAN ACCOUNT"
 echo -e "━━━━━━━━━━━━━━━━━━━━━"
 echo -e "Remarks      : ${user}"
