@@ -19,7 +19,7 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 		CLIENT_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
 
 		if [[ ${CLIENT_EXISTS} == '1' ]]; then
-clear
+
 		exit
 		fi
 	done
@@ -50,13 +50,13 @@ echo -e "Network        : ws" | tee -a /etc/log-create-user.log
 echo -e "Path           : /vless" | tee -a /etc/log-create-user.log
 echo -e "Path           : vless-grpc" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
+echo -e "Expired On     : $exp" | tee -a /etc/log-create-user.log
+echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
 echo -e "Link TLS       : ${vlesslink1}" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
 echo -e "Link none TLS  : ${vlesslink2}" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
 echo -e "Link GRPC      : ${vlesslink3}" | tee -a /etc/log-create-user.log
-echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
-echo -e "Expired On     : $exp" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
 echo -e "THANKS FOR USING OUR SERVICE" | tee -a /etc/log-create-user.log
 echo "" | tee -a /etc/log-create-user.log

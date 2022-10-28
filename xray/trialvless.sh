@@ -19,7 +19,7 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 		CLIENT_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
 
 		if [[ ${CLIENT_EXISTS} == '1' ]]; then
-clear
+        
 		exit
 		fi
 	done
@@ -49,13 +49,13 @@ echo -e "Network        : ws"
 echo -e "Path           : /vless"
 echo -e "Path           : vless-grpc"
 echo -e "━━━━━━━━━━━━━━━━━━━━━"
+echo -e "Expired In     : 30 Minutes"
+echo -e "━━━━━━━━━━━━━━━━━━━━━"
 echo -e "Link TLS       : ${vlesslink1}"
 echo -e "━━━━━━━━━━━━━━━━━━━━━"
 echo -e "Link none TLS  : ${vlesslink2}"
 echo -e "━━━━━━━━━━━━━━━━━━━━━"
 echo -e "Link GRPC      : ${vlesslink3}"
-echo -e "━━━━━━━━━━━━━━━━━━━━━"
-echo -e "Expired On     : $exp"
 echo -e "━━━━━━━━━━━━━━━━━━━━━"
 echo -e "THANKS FOR USING OUR SERVICE"
 echo ""

@@ -1,9 +1,33 @@
+#!/bin/bash
+dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
+#########################
+
+clear
+source /var/lib/SIJA/ipvps.conf
+if [[ "$IP" = "" ]]; then
 domain=$(cat /etc/xray/domain)
+else
+domain=$IP
+fi
+
 tls="$(cat ~/log-install.txt | grep -w "Vmess TLS" | cut -d: -f2|sed 's/ //g')"
 none="$(cat ~/log-install.txt | grep -w "Vmess None TLS" | cut -d: -f2|sed 's/ //g')"
-user=trial`</dev/urandom tr -dc X-Z0-9 | head -c4`
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
+echo -e "━━━━━━━━━━━━━━━━━━━━━"
+echo -e "\\E[0;41;36m      Add Xray/Vmess Account      \E[0m"
+echo -e "━━━━━━━━━━━━━━━━━━━━━"
+
+		read -rp "User: " -e user
+		CLIENT_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
+
+		if [[ ${CLIENT_EXISTS} == '1' ]]; then
+            exit
+		fi
+	done
+
 uuid=$(cat /proc/sys/kernel/random/uuid)
-masaaktif=1
+read -p "Expired (days): " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#vmess$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/config.json
@@ -61,36 +85,33 @@ vmess_base643=$( base64 -w 0 <<< $vmess_json3)
 vmesslink1="vmess://$(echo $acs | base64 -w 0)"
 vmesslink2="vmess://$(echo $ask | base64 -w 0)"
 vmesslink3="vmess://$(echo $grpc | base64 -w 0)"
+
+clear
+echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
+echo -e "Xray/Vmess Account" | tee -a /etc/log-create-user.log
+echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
+echo -e "Remarks        : ${user}" | tee -a /etc/log-create-user.log
+echo -e "Domain         : ${domain}" | tee -a /etc/log-create-user.log
+echo -e "Port TLS       : ${tls}" | tee -a /etc/log-create-user.log
+echo -e "Port none TLS  : ${none}" | tee -a /etc/log-create-user.log
+echo -e "Port  GRPC     : ${tls}" | tee -a /etc/log-create-user.log
+echo -e "id             : ${uuid}" | tee -a /etc/log-create-user.log
+echo -e "alterId        : 0" | tee -a /etc/log-create-user.log
+echo -e "Security       : auto" | tee -a /etc/log-create-user.log
+echo -e "Network        : ws" | tee -a /etc/log-create-user.log
+echo -e "Path           : /vmess" | tee -a /etc/log-create-user.log
+echo -e "ServiceName    : vmess-grpc" | tee -a /etc/log-create-user.log
+echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
+echo -e "Expired In     : 30 Minutes" | tee -a /etc/log-create-user.log
+echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
+echo -e "Link TLS       : ${vmesslink1}" | tee -a /etc/log-create-user.log
+echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
+echo -e "Link none TLS  : ${vmesslink2}" | tee -a /etc/log-create-user.log
+echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
+echo -e "Link GRPC      : ${vmesslink3}" | tee -a /etc/log-create-user.log
+echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
+echo -e "THANKS FOR USING OUR SERVICE"
+echo "" | tee -a /etc/log-create-user.log
+sleep 1
 systemctl restart xray > /dev/null 2>&1
 service cron restart > /dev/null 2>&1
-clear
-
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\E[0;41;36m       Trial Xray/Vmess      \E[0m"
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "Remarks        : ${user}"
-echo -e "Domain         : ${domain}"
-echo -e "Port TLS       : ${tls}"
-echo -e "Port none TLS  : ${none}"
-echo -e "Port  GRPC     : ${tls}"
-echo -e "id             : ${uuid}"
-echo -e "alterId        : 0"
-echo -e "Security       : auto"
-echo -e "Network        : ws"
-echo -e "Path           : /vmess"
-echo -e "ServiceName    : vmess-grpc"
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "Link TLS       : ${vmesslink1}"
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "Link none TLS  : ${vmesslink2}"
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "Link GRPC      : ${vmesslink3}"
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "Expired On     : $exp"
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "THANKS FOR USING OUR SERVICE"
-echo ""
-
-read -n 1 -s -r -p "Press any key to back on menu"
-
-menu
