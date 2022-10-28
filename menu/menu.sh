@@ -1,6 +1,6 @@
 #!/bin/bash
 MYIP=$(curl -sS ipv4.icanhazip.com)
-echo "Checking VPS"
+echo "Welcome Admin!"
 #########################
 
 # Color Validation
@@ -20,6 +20,7 @@ NC='\e[0m'
 GREEN='\033[0;32m'
 ORANGE='\033[0;33m'
 LIGHT='\033[0;37m'
+
 # VPS Information
 #Domain
 domain=$(cat /etc/xray/domain)
