@@ -17,7 +17,7 @@ locality=none
 organization=none
 organizationalunit=none
 commonname=none
-email=adamspx17@gmail.com
+email=admin@naravpn.com
 
 # simple password minimal
 curl -sS https://raw.githubusercontent.com/presult77/script/main/ssh/password | openssl aes-256-cbc -d -a -pass pass:scvps07gg -pbkdf2 > /etc/pam.d/common-password
@@ -83,7 +83,7 @@ apt-get install ruby -y
 gem install lolcat
 
 # set time GMT +08
-ln -fs /usr/share/zoneinfo/Asia/Kuala_Lumpur /etc/localtime
+ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 
 # set locale
 sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
@@ -160,56 +160,6 @@ sed -i '/Port 22/a Port 200' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 22' /etc/ssh/sshd_config
 /etc/init.d/ssh restart
 
-echo "=== Install Dropbear ==="
-# install dropbear
-apt -y install dropbear
-sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=143/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 50000 -p 109 -p 110 -p 69"/g' /etc/default/dropbear
-echo "/bin/false" >> /etc/shells
-echo "/usr/sbin/nologin" >> /etc/shells
-/etc/init.d/ssh restart
-/etc/init.d/dropbear restart
-
-cd
-# install stunnel
-apt install stunnel4 -y
-cat > /etc/stunnel/stunnel.conf <<-END
-cert = /etc/stunnel/stunnel.pem
-client = no
-socket = a:SO_REUSEADDR=1
-socket = l:TCP_NODELAY=1
-socket = r:TCP_NODELAY=1
-
-[dropbear]
-accept = 222
-connect = 127.0.0.1:22
-
-[dropbear]
-accept = 777
-connect = 127.0.0.1:109
-
-[ws-stunnel]
-accept = 2096
-connect = 700
-
-[openvpn]
-accept = 442
-connect = 127.0.0.1:1194
-
-END
-
-# make a certificate
-openssl genrsa -out key.pem 2048
-openssl req -new -x509 -key key.pem -out cert.pem -days 1095 \
--subj "/C=$country/ST=$state/L=$locality/O=$organization/OU=$organizationalunit/CN=$commonname/emailAddress=$email"
-cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
-
-# konfigurasi stunnel
-sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
-/etc/init.d/stunnel4 restart
-
-
 # install fail2ban
 apt -y install fail2ban
 
@@ -240,14 +190,6 @@ echo; echo 'Installation has completed.'
 echo 'Config file is at /usr/local/ddos/ddos.conf'
 echo 'Please send in your comments and/or suggestions to zaf@vsnl.com'
 
-# banner /etc/issue.net
-sleep 1
-echo -e "[ ${green}INFO$NC ] Settings banner"
-wget -q -O /etc/issue.net "https://raw.githubusercontent.com/presult77/script/main/issue.net"
-chmod +x /etc/issue.net
-echo "Banner /etc/issue.net" >> /etc/ssh/sshd_config
-sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
-
 #install bbr dan optimasi kernel
 wget https://raw.githubusercontent.com/presult77/script/main/ssh/bbr.sh && chmod +x bbr.sh && ./bbr.sh
 
@@ -276,21 +218,7 @@ wget -O menu-vmess "https://raw.githubusercontent.com/presult77/script/main/menu
 wget -O menu-vless "https://raw.githubusercontent.com/presult77/script/main/menu/menu-vless.sh"
 wget -O running "https://raw.githubusercontent.com/presult77/script/main/menu/running.sh"
 wget -O clearcache "https://raw.githubusercontent.com/presult77/script/main/menu/clearcache.sh"
-wget -O menu-trgo "https://raw.githubusercontent.com/presult77/script/main/menu/menu-trgo.sh"
 wget -O menu-trojan "https://raw.githubusercontent.com/presult77/script/main/menu/menu-trojan.sh"
-
-# menu ssh ovpn
-wget -O menu-ssh "https://raw.githubusercontent.com/presult77/script/main/menu/menu-ssh.sh"
-wget -O usernew "https://raw.githubusercontent.com/presult77/script/main/ssh/usernew.sh"
-wget -O trial "https://raw.githubusercontent.com/presult77/script/main/ssh/trial.sh"
-wget -O renew "https://raw.githubusercontent.com/presult77/script/main/ssh/renew.sh"
-wget -O hapus "https://raw.githubusercontent.com/presult77/script/main/ssh/hapus.sh"
-wget -O cek "https://raw.githubusercontent.com/presult77/script/main/ssh/cek.sh"
-wget -O member "https://raw.githubusercontent.com/presult77/script/main/ssh/member.sh"
-wget -O delete "https://raw.githubusercontent.com/presult77/script/main/ssh/delete.sh"
-wget -O autokill "https://raw.githubusercontent.com/presult77/script/main/ssh/autokill.sh"
-wget -O ceklim "https://raw.githubusercontent.com/presult77/script/main/ssh/ceklim.sh"
-wget -O tendang "https://raw.githubusercontent.com/presult77/script/main/ssh/tendang.sh"
 
 # menu system
 wget -O menu-set "https://raw.githubusercontent.com/presult77/script/main/menu/menu-set.sh"
@@ -305,36 +233,15 @@ wget -O auto-reboot "https://raw.githubusercontent.com/presult77/script/main/men
 wget -O restart "https://raw.githubusercontent.com/presult77/script/main/menu/restart.sh"
 wget -O bw "https://raw.githubusercontent.com/presult77/script/main/menu/bw.sh"
 
-# change port
-wget -O port-ssl "https://raw.githubusercontent.com/presult77/script/main/port/port-ssl.sh"
-wget -O port-ovpn "https://raw.githubusercontent.com/presult77/script/main/port/port-ovpn.sh"
-wget -O port-tr "https://raw.githubusercontent.com/presult77/script/main/port/port-tr.sh"
-
-
 wget -O xp "https://raw.githubusercontent.com/presult77/script/main/ssh/xp.sh"
 wget -O acs-set "https://raw.githubusercontent.com/presult77/script/main/acs-set.sh"
-
-wget -O sshws "https://raw.githubusercontent.com/presult77/script/main/ssh/sshws.sh"
 
 chmod +x menu
 chmod +x menu-vmess
 chmod +x menu-vless
 chmod +x running
 chmod +x clearcache
-chmod +x menu-trgo
 chmod +x menu-trojan
-
-chmod +x menu-ssh
-chmod +x usernew
-chmod +x trial
-chmod +x renew
-chmod +x hapus
-chmod +x cek
-chmod +x member
-chmod +x delete
-chmod +x autokill
-chmod +x ceklim
-chmod +x tendang
 
 chmod +x menu-set
 chmod +x menu-domain
@@ -348,14 +255,9 @@ chmod +x auto-reboot
 chmod +x restart
 chmod +x bw
 
-chmod +x port-ssl
-chmod +x port-ovpn
-
 chmod +x xp
 chmod +x acs-set
-chmod +x sshws
 cd
-
 
 cat > /etc/cron.d/re_otm <<-END
 SHELL=/bin/sh
@@ -394,29 +296,19 @@ apt autoremove -y >/dev/null 2>&1
 cd
 chown -R www-data:www-data /home/vps/public_html
 sleep 1
-echo -e "$yell[SERVICE]$NC Restart All service SSH & OVPN"
+echo -e "$yell[SERVICE]$NC Restart All service"
 /etc/init.d/nginx restart >/dev/null 2>&1
 sleep 1
 echo -e "[ ${green}ok${NC} ] Restarting nginx"
-/etc/init.d/openvpn restart >/dev/null 2>&1
-sleep 1
-echo -e "[ ${green}ok${NC} ] Restarting cron "
 /etc/init.d/ssh restart >/dev/null 2>&1
 sleep 1
 echo -e "[ ${green}ok${NC} ] Restarting ssh "
-/etc/init.d/dropbear restart >/dev/null 2>&1
-sleep 1
-echo -e "[ ${green}ok${NC} ] Restarting dropbear "
 /etc/init.d/fail2ban restart >/dev/null 2>&1
 sleep 1
 echo -e "[ ${green}ok${NC} ] Restarting fail2ban "
-/etc/init.d/stunnel4 restart >/dev/null 2>&1
-sleep 1
-echo -e "[ ${green}ok${NC} ] Restarting stunnel4 "
 /etc/init.d/vnstat restart >/dev/null 2>&1
 sleep 1
 echo -e "[ ${green}ok${NC} ] Restarting vnstat "
-/etc/init.d/squid restart >/dev/null 2>&1
 
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 500
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500

@@ -90,10 +90,9 @@ echo -e "\e[33m Monthly Bandwith Usage	\e[0m:  $tmon"
 echo -e "\e[33m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "                 • SCRIPT MENU •                 "
 echo -e "\e[33m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e " [\e[36m•1\e[0m] SSH & OpenVPN Menu  [\e[36m•5\e[0m] System Menu"
-echo -e " [\e[36m•2\e[0m] Vmess Menu          [\e[36m•6\e[0m] Status Service"
-echo -e " [\e[36m•3\e[0m] Vless Menu          [\e[36m•7\e[0m] Clear RAM Cache"
-echo -e " [\e[36m•4\e[0m] Trojan Go Menu      [\e[36m•8\e[0m] Trojan GFW Menu"                  
+echo -e " [\e[36m•1\e[0m] VMess Menu		[\e[36m•4\e[0m] Menu System"
+echo -e " [\e[36m•2\e[0m] Vless Menu		[\e[36m•5\e[0m] Status Service"
+echo -e " [\e[36m•3\e[0m] Trojan			[\e[36m•6\e[0m] Clear RAM Cache"                
 echo -e   ""
 echo -e   " Press x or [ Ctrl+C ] • To-Exit-Script"
 echo -e   ""
@@ -101,13 +100,11 @@ echo -e   ""
 read -p " Select menu :  "  opt
 echo -e   ""
 case $opt in
-1) clear ; menu-ssh ;;
-2) clear ; menu-vmess ;;
-3) clear ; menu-vless ;;
-4) clear ; menu-trgo ;;
-5) clear ; menu-set ;;
-6) clear ; running ;;
-7) clear ; clearcache ;;
-8) clear ; menu-trojan ;;
+1) clear ; menu-vmess ;;
+2) clear ; menu-vless ;;
+3) clear ; menu-trojan ;;
+4) clear ; menu-set ;;
+5) clear ; running ;;
+6) clear ; clearcache ;;
 x) exit ;;
 esac

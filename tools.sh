@@ -1,5 +1,6 @@
 #!/bin/bash
 clear
+NET=$(ip -o -4 route show to default | awk '{print $5}');
 red='\e[1;31m'
 green='\e[1;32m'
 yell='\e[1;33m'
@@ -15,9 +16,6 @@ elif [[ -e /etc/centos-release ]]; then
 	OS=centos
 fi
 
-
-
-
 echo "Tools install...!"
 echo "Progress..."
 sleep 2
@@ -28,13 +26,12 @@ sudo apt dist-upgrade -y
 sudo apt-get remove --purge ufw firewalld -y 
 sudo apt-get remove --purge exim4 -y 
 
-
 sudo apt install -y screen curl jq bzip2 gzip coreutils rsyslog iftop \
  htop zip unzip net-tools sed gnupg gnupg1 \
  bc sudo apt-transport-https build-essential dirmngr libxml-parser-perl neofetch screenfetch git lsof \
- openssl openvpn easy-rsa fail2ban tmux \
- stunnel4 vnstat squid3 \
- dropbear  libsqlite3-dev \
+ openssl easy-rsa fail2ban tmux \
+ vnstat \
+ libsqlite3-dev \
  socat cron bash-completion ntpdate xz-utils sudo apt-transport-https \
  gnupg2 dnsutils lsb-release chrony
 
@@ -63,4 +60,3 @@ yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
 yellow "Dependencies successfully installed..."
 sleep 3
 clear
-

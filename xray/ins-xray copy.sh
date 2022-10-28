@@ -52,6 +52,8 @@ touch /var/log/xray/error2.log
 # / / Ambil Xray Core Version Terbaru
 bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u www-data --version 1.5.6
 
+
+
 ## crt xray
 systemctl stop nginx
 mkdir /root/.acme.sh
@@ -164,6 +166,27 @@ cat > /etc/xray/config.json << END
            {
            "method": "aes-128-gcm",
           "password": "${uuid}"
+#ssws
+           }
+          ],
+          "network": "tcp,udp"
+       },
+       "streamSettings":{
+          "network": "ws",
+             "wsSettings": {
+               "path": "/ss-ws"
+           }
+        }
+     },	
+      {
+        "listen": "127.0.0.1",
+     "port": "24456",
+        "protocol": "vless",
+        "settings": {
+         "decryption":"none",
+           "clients": [
+             {
+               "id": "${uuid}"
 #vlessgrpc
              }
           ]
@@ -346,6 +369,110 @@ Restart=on-abort
 WantedBy=multi-user.target
 EOF
 
+# Install Trojan Go
+latest_version="$(curl -s "https://api.github.com/repos/p4gefau1t/trojan-go/releases" | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
+trojango_link="https://github.com/p4gefau1t/trojan-go/releases/download/v${latest_version}/trojan-go-linux-amd64.zip"
+mkdir -p "/usr/bin/trojan-go"
+mkdir -p "/etc/trojan-go"
+cd `mktemp -d`
+curl -sL "${trojango_link}" -o trojan-go.zip
+unzip -q trojan-go.zip && rm -rf trojan-go.zip
+mv trojan-go /usr/local/bin/trojan-go
+chmod +x /usr/local/bin/trojan-go
+mkdir /var/log/trojan-go/
+touch /etc/trojan-go/akun.conf
+touch /var/log/trojan-go/trojan-go.log
+
+# Buat Config Trojan Go
+cat > /etc/trojan-go/config.json << END
+{
+  "run_type": "server",
+  "local_addr": "0.0.0.0",
+  "local_port": 2087,
+  "remote_addr": "127.0.0.1",
+  "remote_port": 89,
+  "log_level": 1,
+  "log_file": "/var/log/trojan-go/trojan-go.log",
+  "password": [
+      "$uuid"
+  ],
+  "disable_http_check": true,
+  "udp_timeout": 60,
+  "ssl": {
+    "verify": false,
+    "verify_hostname": false,
+    "cert": "/etc/xray/xray.crt",
+    "key": "/etc/xray/xray.key",
+    "key_password": "",
+    "cipher": "",
+    "curves": "",
+    "prefer_server_cipher": false,
+    "sni": "$domain",
+    "alpn": [
+      "http/1.1"
+    ],
+    "session_ticket": true,
+    "reuse_session": true,
+    "plain_http_response": "",
+    "fallback_addr": "127.0.0.1",
+    "fallback_port": 0,
+    "fingerprint": "firefox"
+  },
+  "tcp": {
+    "no_delay": true,
+    "keep_alive": true,
+    "prefer_ipv4": true
+  },
+  "mux": {
+    "enabled": false,
+    "concurrency": 8,
+    "idle_timeout": 60
+  },
+  "websocket": {
+    "enabled": true,
+    "path": "/trojango",
+    "host": "$domain"
+  },
+    "api": {
+    "enabled": false,
+    "api_addr": "",
+    "api_port": 0,
+    "ssl": {
+      "enabled": false,
+      "key": "",
+      "cert": "",
+      "verify_client": false,
+      "client_cert": []
+    }
+  }
+}
+END
+
+# Installing Trojan Go Service
+cat > /etc/systemd/system/trojan-go.service << END
+[Unit]
+Description=Trojan-Go Service Mod By ADAM SIJA
+Documentation=github.com/adammoi/vipies
+After=network.target nss-lookup.target
+
+[Service]
+User=root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/local/bin/trojan-go -config /etc/trojan-go/config.json
+Restart=on-failure
+RestartPreventExitStatus=23
+
+[Install]
+WantedBy=multi-user.target
+END
+
+# Trojan Go Uuid
+cat > /etc/trojan-go/uuid.txt << END
+$uuid
+END
+
 #nginx config
 cat >/etc/nginx/conf.d/xray.conf <<EOF
     server {
@@ -389,6 +516,30 @@ sed -i '$ ilocation = /trojan-ws' /etc/nginx/conf.d/xray.conf
 sed -i '$ i{' /etc/nginx/conf.d/xray.conf
 sed -i '$ iproxy_redirect off;' /etc/nginx/conf.d/xray.conf
 sed -i '$ iproxy_pass http://127.0.0.1:25432;' /etc/nginx/conf.d/xray.conf
+sed -i '$ iproxy_http_version 1.1;' /etc/nginx/conf.d/xray.conf
+sed -i '$ iproxy_set_header X-Real-IP \$remote_addr;' /etc/nginx/conf.d/xray.conf
+sed -i '$ iproxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;' /etc/nginx/conf.d/xray.conf
+sed -i '$ iproxy_set_header Upgrade \$http_upgrade;' /etc/nginx/conf.d/xray.conf
+sed -i '$ iproxy_set_header Connection "upgrade";' /etc/nginx/conf.d/xray.conf
+sed -i '$ iproxy_set_header Host \$http_host;' /etc/nginx/conf.d/xray.conf
+sed -i '$ i}' /etc/nginx/conf.d/xray.conf
+
+sed -i '$ ilocation = /trojango' /etc/nginx/conf.d/xray.conf
+sed -i '$ i{' /etc/nginx/conf.d/xray.conf
+sed -i '$ iproxy_redirect off;' /etc/nginx/conf.d/xray.conf
+sed -i '$ iproxy_pass http://127.0.0.1:2087;' /etc/nginx/conf.d/xray.conf
+sed -i '$ iproxy_http_version 1.1;' /etc/nginx/conf.d/xray.conf
+sed -i '$ iproxy_set_header X-Real-IP \$remote_addr;' /etc/nginx/conf.d/xray.conf
+sed -i '$ iproxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;' /etc/nginx/conf.d/xray.conf
+sed -i '$ iproxy_set_header Upgrade \$http_upgrade;' /etc/nginx/conf.d/xray.conf
+sed -i '$ iproxy_set_header Connection "upgrade";' /etc/nginx/conf.d/xray.conf
+sed -i '$ iproxy_set_header Host \$http_host;' /etc/nginx/conf.d/xray.conf
+sed -i '$ i}' /etc/nginx/conf.d/xray.conf
+
+sed -i '$ ilocation = /ss-ws' /etc/nginx/conf.d/xray.conf
+sed -i '$ i{' /etc/nginx/conf.d/xray.conf
+sed -i '$ iproxy_redirect off;' /etc/nginx/conf.d/xray.conf
+sed -i '$ iproxy_pass http://127.0.0.1:30300;' /etc/nginx/conf.d/xray.conf
 sed -i '$ iproxy_http_version 1.1;' /etc/nginx/conf.d/xray.conf
 sed -i '$ iproxy_set_header X-Real-IP \$remote_addr;' /etc/nginx/conf.d/xray.conf
 sed -i '$ iproxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;' /etc/nginx/conf.d/xray.conf
@@ -447,6 +598,10 @@ systemctl restart xray
 systemctl restart nginx
 systemctl enable runn
 systemctl restart runn
+systemctl stop trojan-go
+systemctl start trojan-go
+systemctl enable trojan-go
+systemctl restart trojan-go
 
 cd /usr/local/sbin/
 # vmess
@@ -470,6 +625,13 @@ wget -O trialtrojan "https://raw.githubusercontent.com/presult77/script/main/xra
 wget -O del-tr "https://raw.githubusercontent.com/presult77/script/main/xray/del-tr.sh" && chmod +x del-tr
 wget -O renew-tr "https://raw.githubusercontent.com/presult77/script/main/xray/renew-tr.sh" && chmod +x renew-tr
 wget -O cek-tr "https://raw.githubusercontent.com/presult77/script/main/xray/cek-tr.sh" && chmod +x cek-tr
+
+# trojan go
+wget -O addtrgo "https://raw.githubusercontent.com/presult77/script/main/xray/addtrgo.sh" && chmod +x addtrgo
+wget -O trialtrojango "https://raw.githubusercontent.com/presult77/script/main/xray/trialtrojango.sh" && chmod +x trialtrojango
+wget -O deltrgo "https://raw.githubusercontent.com/presult77/script/main/xray/deltrgo.sh" && chmod +x deltrgo
+wget -O renewtrgo "https://raw.githubusercontent.com/presult77/script/main/xray/renewtrgo.sh" && chmod +x renewtrgo
+wget -O cektrgo "https://raw.githubusercontent.com/presult77/script/main/xray/cektrgo.sh" && chmod +x cektrgo
 
 sleep 1
 yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
