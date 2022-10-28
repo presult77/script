@@ -37,7 +37,6 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     exp4=`date -d "$exp3 days" +"%Y-%m-%d"`
     sed -i "/#& $user/c\#& $user $exp4" /etc/xray/config.json
 
-
 clear
 echo ""
 echo "==============================="
