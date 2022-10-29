@@ -28,7 +28,7 @@ clear
     sed -i "/#! $user/c\#! $user $exp4" /etc/xray/config.json
     clear
     echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
-    echo " Trojan Account Was Successfully Renewed" | tee -a /etc/log-create-user.log
+    echo "Trojan Account Was Successfully Renewed" | tee -a /etc/log-create-user.log
     echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
     echo "" | tee -a /etc/log-create-user.log
     echo " Client Name : $user" | tee -a /etc/log-create-user.log

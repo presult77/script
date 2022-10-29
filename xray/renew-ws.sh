@@ -38,7 +38,7 @@ clear
 	clear
 	echo "" | tee -a /etc/log-create-user.log
 	echo "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
-	echo "  Xray/Vmess Account Renewed  " | tee -a /etc/log-create-user.log
+	echo "Xray/Vmess Account Renewed" | tee -a /etc/log-create-user.log
 	echo "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
 	echo "Username  : $user" | tee -a /etc/log-create-user.log
 	echo "Expired   : $exp4" | tee -a /etc/log-create-user.log
