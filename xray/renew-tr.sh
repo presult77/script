@@ -39,4 +39,3 @@ clear
     echo "" | tee -a /etc/log-create-user.log
     sleep 1
     systemctl restart xray > /dev/null 2>&1
-    fi

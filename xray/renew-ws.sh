@@ -47,4 +47,3 @@ clear
 	sleep 1
 	service cron restart
 	systemctl restart xray > /dev/null 2>&1
-    fi
