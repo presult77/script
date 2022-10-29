@@ -44,7 +44,6 @@ clear
 	echo "Expired   : $exp4" | tee -a /etc/log-create-user.log
 	echo "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
 	echo "THANKS FOR USING OUR SERVICE" | tee -a /etc/log-create-user.log
-
 	sleep 1
 	service cron restart
 	systemctl restart xray > /dev/null 2>&1

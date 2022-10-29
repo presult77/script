@@ -49,7 +49,6 @@ echo -e "Link WS      : ${trojanlink}"
 echo -e "━━━━━━━━━━━━━━━━━━━━━"
 echo -e "Link GRPC    : ${trojanlink1}"
 echo -e "━━━━━━━━━━━━━━━━━━━━━"
-echo ""
 echo -e "THANKS FOR USING OUR SERVICE"
 sleep 1
 systemctl restart xray > /dev/null 2>&1

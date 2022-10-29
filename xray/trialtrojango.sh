@@ -55,6 +55,5 @@ echo -e "Link TrGo  		: ${link}"
 echo -e "Link TrGo (v2rayNG)	: ${link1}"
 echo -e "━━━━━━━━━━━━━━━━━━━━━"
 echo -e "THANKS FOR USING OUR SERVICE"
-echo ""
 sleep 1
 systemctl restart trojan-go.service
