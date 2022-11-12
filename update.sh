@@ -36,3 +36,5 @@ wget -O del-tr "https://raw.githubusercontent.com/presult77/script/main/xray/del
 wget -O renew-tr "https://raw.githubusercontent.com/presult77/script/main/xray/renew-tr.sh" && chmod +x renew-tr
 wget -O cek-tr "https://raw.githubusercontent.com/presult77/script/main/xray/cek-tr.sh" && chmod +x cek-tr
 wget -O menu "https://raw.githubusercontent.com/presult77/script/main/menu/menu.sh" && chmod +x menu
+
+ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
