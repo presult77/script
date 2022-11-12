@@ -25,8 +25,8 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
 		echo "You have no existing clients!"
 		echo ""
 		echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━\033[0m"
+		exit
 	fi
-
 	clear
 	echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo -e "\E[44;1;39m     ⇱ Delete Trojan Account ⇲     \E[0m"
@@ -44,7 +44,6 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
 	exp=$(grep -E "^### $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
 	sed -i "/^### $user $exp/,/^},{/d" /etc/xray/config.json
 	rm -f /etc/xray/vmess-$user-tls.json /etc/xray/vmess-$user-nontls.json
-
 	clear
 	echo ""
 	echo "==============================="
