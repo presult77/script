@@ -27,8 +27,9 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^#! " "/etc/xray/config.json")
     echo ""
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━\033[0m"
 	read -rp "Input Username : " user
-    if [ -z $user ]; then
-    menu
+    CLIENT_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
+    if [[ ${CLIENT_EXISTS} == '0' ]]; then
+    exit 1
     else
     exp=$(grep -wE "^#! $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
     sed -i "/^#! $user $exp/,/^},{/d" /etc/xray/config.json
@@ -41,6 +42,4 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^#! " "/etc/xray/config.json")
     echo " Expired On  : $exp"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo "NARAVPN"
-    read -n 1 -s -r -p "Press any key to back on menu"
-    menu
     fi
