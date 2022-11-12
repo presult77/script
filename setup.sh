@@ -210,12 +210,12 @@ tls on
 tls_starttls on
 tls_trust_file /etc/ssl/certs/ca-certificates.crt
 account default
-host smtp.gmail.com
+host mail.naravpn.com
 port 587
 auth on
-user ridhodata01@gmail.com
-from ridhodata01@gmail.com
-password peciajaib752
+user admin@naravpn.com
+from admin@naravpn.com
+password Peciajaib752##
 logfile ~/.msmtp.log
 EOF
 
@@ -224,7 +224,7 @@ cd /usr/local/sbin
 wget -O autobackup "https://raw.githubusercontent.com/presult77/script/main/backup/autobackup.sh"
 wget -O backup "https://raw.githubusercontent.com/presult77/script/main/backup/backup.sh"
 wget -O bckp "https://raw.githubusercontent.com/presult77/script/main/backup/bckp.sh"
-wget -O restore "https://raw.githubusercontent.com/presult77/fucking/main/tipe1/restore.sh"
+wget -O restore "https://raw.githubusercontent.com/presult77/script/main/backup/restore.sh"
 chmod +x autobackup
 chmod +x backup
 chmod +x bckp
