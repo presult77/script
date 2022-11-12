@@ -16,7 +16,7 @@ clear
 echo -n > /tmp/other.txt
 data=(`cat /etc/xray/config.json | grep '^#&' | cut -d ' ' -f 2 | column -t | sort | uniq`);
 echo "-------------------------------";
-echo "-----=[ Xray Vmess Login ]=-----";
+echo "-----=[ Xray Vless Login ]=-----";
 echo "-------------------------------";
 for akun in "${data[@]}"
 do
