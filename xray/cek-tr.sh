@@ -2,6 +2,7 @@
 rm /var/log/xray/access.log
 rm /var/log/xray/error.log
 systemctl restart xray
+clear
 echo -e "[ ${green}INFO${NC} ] Waiting client connection"
 sleep 20
 red='\e[1;31m'
