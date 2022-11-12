@@ -43,7 +43,9 @@ acs=`cat<<EOF
       "path": "/vmess",
       "type": "none",
       "host": "${domain}",
-      "tls": "tls"
+      "tls": "tls",
+      "allowInsecure": "true",
+      "serverName": "${domain}"
 }
 EOF`
 ask=`cat<<EOF
@@ -73,7 +75,9 @@ grpc=`cat<<EOF
       "path": "vmess-grpc",
       "type": "none",
       "host": "",
-      "tls": "tls"
+      "tls": "tls",
+      "allowInsecure": "true",
+      "serverName": "${domain}"
 }
 EOF`
 vmess_base641=$( base64 -w 0 <<< $vmess_json1)
