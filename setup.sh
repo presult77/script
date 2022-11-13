@@ -20,7 +20,7 @@ if [ "${EUID}" -ne 0 ]; then
 		echo "You need to run this script as root"
 		exit 1
 fi
-if [ "$(systemd-detect-virt)" == "openvz" ]; then
+if [ "$(systemd-detect-virt)" == "NULL" ]; then
 		echo "OpenVZ is not supported"
 		exit 1
 fi
