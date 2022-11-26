@@ -50,5 +50,4 @@ echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee 
 echo -e "Link GRPC    : ${trojanlink1}" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
 echo -e "THANKS FOR USING OUR SERVICE" | tee -a /etc/log-create-user.log
-sleep 1
 systemctl restart xray > /dev/null 2>&1
