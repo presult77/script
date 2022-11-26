@@ -115,4 +115,4 @@ echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee 
 echo -e "Link GRPC      : ${vmesslink3}" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
 echo -e "THANKS FOR USING OUR SERVICE"
-systemctl restart xray > /dev/null 2>&1
+at now -f /root/restart.sh

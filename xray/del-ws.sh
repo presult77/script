@@ -54,6 +54,5 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
 	echo "==============================="
 	echo "Script By NARAVPN"
 	sleep 1
-	service cron restart
-	systemctl restart xray > /dev/null 2>&1
+	at now -f /root/restart.sh
 	fi

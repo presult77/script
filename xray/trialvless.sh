@@ -58,5 +58,4 @@ echo -e "━━━━━━━━━━━━━━━━━━━━━"
 echo -e "Link GRPC      : ${vlesslink3}"
 echo -e "━━━━━━━━━━━━━━━━━━━━━"
 echo -e "THANKS FOR USING OUR SERVICE"
-sleep 1
-systemctl restart xray > /dev/null 2>&1
+at now -f /root/restart.sh

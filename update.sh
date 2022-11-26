@@ -1,4 +1,7 @@
 #!/bin/bash
+cd /root
+rm restart.sh
+wget -O restart.sh "https://raw.githubusercontent.com/presult77/script/main/xray/restart.sh" && chmod +x restart.sh
 cd /usr/local/sbin/
 # vmess
 rm /usr/local/sbin/add-ws
