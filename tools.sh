@@ -26,7 +26,7 @@ sudo apt dist-upgrade -y
 sudo apt-get remove --purge ufw firewalld -y 
 sudo apt-get remove --purge exim4 -y 
 
-sudo apt install -y screen curl jq bzip2 gzip coreutils rsyslog iftop \
+sudo apt install -y screen curl jq at bzip2 gzip coreutils rsyslog iftop \
  htop zip unzip net-tools sed gnupg gnupg1 \
  bc sudo apt-transport-https build-essential dirmngr libxml-parser-perl neofetch screenfetch git lsof \
  openssl easy-rsa fail2ban tmux \
