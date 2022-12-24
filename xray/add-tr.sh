@@ -26,24 +26,22 @@ uuid=$(cat /proc/sys/kernel/random/uuid)
 read -p "Expired (days): " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#trojanws$/a\#! '"$user $exp"'\
-},{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
+},{"password": "'""$uuid""'","email": "'""$user-ws""'"' /etc/xray/config.json
 sed -i '/#trojangrpc$/a\#! '"$user $exp"'\
-},{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
+},{"password": "'""$uuid""'","email": "'""$user-grpc""'"' /etc/xray/config.json
 
 trojanlink1="trojan://${uuid}@${domain}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=${domain}#${user}"
 trojanlink="trojan://${uuid}@${domain}:${tr}?path=%2Ftrojan-ws&security=tls&host=${domain}&type=ws&sni=${domain}#${user}"
 clear
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
-echo -e "TROJAN ACCOUNT" | tee -a /etc/log-create-user.log
+echo -e "VIP TROJAN ACCOUNT" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
-echo -e "Remarks      : ${user}" | tee -a /etc/log-create-user.log
-echo -e "Host/IP      : ${domain}" | tee -a /etc/log-create-user.log
+echo -e "Username     : ${user}" | tee -a /etc/log-create-user.log
+echo -e "Domain       : ${domain}" | tee -a /etc/log-create-user.log
 echo -e "Port         : ${tr}" | tee -a /etc/log-create-user.log
 echo -e "Key          : ${uuid}" | tee -a /etc/log-create-user.log
 echo -e "Path         : /trojan-ws" | tee -a /etc/log-create-user.log
 echo -e "ServiceName  : trojan-grpc" | tee -a /etc/log-create-user.log
-echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
-echo -e "Expired On   : $exp" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
 echo -e "Link WS      : ${trojanlink}" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
