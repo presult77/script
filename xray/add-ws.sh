@@ -91,17 +91,17 @@ clear
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
 echo -e "VIP Xray/Vmess Account" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
-echo -e "Username       : ${user}" | tee -a /etc/log-create-user.log
-echo -e "Domain         : ${domain}" | tee -a /etc/log-create-user.log
-echo -e "Port           : TLS (443), nTLS (80, 8080), gRPC (443)" | tee -a /etc/log-create-user.log
-echo -e "id             : ${uuid}" | tee -a /etc/log-create-user.log
-echo -e "Path           : /vmess & /custom" | tee -a /etc/log-create-user.log
+echo -e "Username: ${user}" | tee -a /etc/log-create-user.log
+echo -e "Domain: ${domain}" | tee -a /etc/log-create-user.log
+echo -e "Port: TLS (443), nTLS (80, 8080), gRPC (443)" | tee -a /etc/log-create-user.log
+echo -e "id: ${uuid}" | tee -a /etc/log-create-user.log
+echo -e "Path: /vmess & /custom" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
-echo -e "Link TLS       : ${vmesslink1}" | tee -a /etc/log-create-user.log
+echo -e "Link TLS : ${vmesslink1}" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
-echo -e "Link none TLS  : ${vmesslink2}" | tee -a /etc/log-create-user.log
+echo -e "Link none TLS : ${vmesslink2}" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
-echo -e "Link GRPC      : ${vmesslink3}" | tee -a /etc/log-create-user.log
+echo -e "Link GRPC : ${vmesslink3}" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
 
 echo -e "THANKS FOR USING OUR SERVICE" | tee -a /etc/log-create-user.log
