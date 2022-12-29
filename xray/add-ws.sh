@@ -89,7 +89,7 @@ vmesslink3="vmess://$(echo $grpc | base64 -w 0)"
 
 clear
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
-echo -e "VIP Xray/Vmess Account" | tee -a /etc/log-create-user.log
+echo -e "VIP Vmess Account" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
 echo -e "Username: ${user}" | tee -a /etc/log-create-user.log
 echo -e "Domain: ${domain}" | tee -a /etc/log-create-user.log

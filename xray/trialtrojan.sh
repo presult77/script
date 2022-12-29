@@ -36,16 +36,15 @@ clear
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
 echo -e "Trial 30 Minutes TROJAN ACCOUNT" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
-echo -e "Username     : ${user}" | tee -a /etc/log-create-user.log
-echo -e "Domain       : ${domain}" | tee -a /etc/log-create-user.log
-echo -e "Port         : ${tr}" | tee -a /etc/log-create-user.log
-echo -e "Key          : ${uuid}" | tee -a /etc/log-create-user.log
-echo -e "Path         : /trojan-ws" | tee -a /etc/log-create-user.log
-echo -e "ServiceName  : trojan-grpc" | tee -a /etc/log-create-user.log
+echo -e "Username: ${user}" | tee -a /etc/log-create-user.log
+echo -e "Domain: ${domain}" | tee -a /etc/log-create-user.log
+echo -e "Port: ${tr}" | tee -a /etc/log-create-user.log
+echo -e "Key: ${uuid}" | tee -a /etc/log-create-user.log
+echo -e "Path: /trojan-ws" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
-echo -e "Link WS      : ${trojanlink}" | tee -a /etc/log-create-user.log
+echo -e "Link WS : ${trojanlink}" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
-echo -e "Link GRPC    : ${trojanlink1}" | tee -a /etc/log-create-user.log
+echo -e "Link GRPC : ${trojanlink1}" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
 echo -e "THANKS FOR USING OUR SERVICE" | tee -a /etc/log-create-user.log
 at now -f /root/restart.sh

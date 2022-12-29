@@ -37,19 +37,19 @@ vlesslink3="vless://${uuid}@${domain}:$tls?mode=gun&security=tls&encryption=none
 
 clear
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
-echo -e "VIP Xray/Vless Account" | tee -a /etc/log-create-user.log
+echo -e "Trial 30 Minutes Vless Account" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
-echo -e "Username       : ${user}" | tee -a /etc/log-create-user.log
-echo -e "Domain         : ${domain}" | tee -a /etc/log-create-user.log
-echo -e "Port           : TLS (443), nTLS (80, 8080), gRPC (443)" | tee -a /etc/log-create-user.log
-echo -e "id             : ${uuid}" | tee -a /etc/log-create-user.log
-echo -e "Path           : /vless" | tee -a /etc/log-create-user.log
+echo -e "Username: ${user}" | tee -a /etc/log-create-user.log
+echo -e "Domain: ${domain}" | tee -a /etc/log-create-user.log
+echo -e "Port: TLS (443), nTLS (80, 8080), gRPC (443)" | tee -a /etc/log-create-user.log
+echo -e "id: ${uuid}" | tee -a /etc/log-create-user.log
+echo -e "Path: /vless" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
-echo -e "Link TLS       : ${vlesslink1}" | tee -a /etc/log-create-user.log
+echo -e "Link TLS : ${vlesslink1}" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
-echo -e "Link none TLS  : ${vlesslink2}" | tee -a /etc/log-create-user.log
+echo -e "Link none TLS : ${vlesslink2}" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
-echo -e "Link GRPC      : ${vlesslink3}" | tee -a /etc/log-create-user.log
+echo -e "Link GRPC : ${vlesslink3}" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
 echo -e "THANKS FOR USING OUR SERVICE" | tee -a /etc/log-create-user.log
 at now -f /root/restart.sh
