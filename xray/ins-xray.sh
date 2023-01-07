@@ -344,8 +344,8 @@ NoNewPrivileges=true
 ExecStart=/usr/local/bin/xray run -config /etc/xray/config.json
 Restart=on-failure
 RestartPreventExitStatus=23
-LimitNPROC=10000
-LimitNOFILE=530000
+LimitNPROC=100000000
+LimitNOFILE=100000000
 
 [Install]
 WantedBy=multi-user.target
@@ -361,6 +361,8 @@ Type=simple
 ExecStartPre=-/usr/bin/mkdir -p /var/run/xray
 ExecStart=/usr/bin/chown www-data:www-data /var/run/xray
 Restart=on-abort
+LimitNPROC=100000000
+LimitNOFILE=100000000
 
 [Install]
 WantedBy=multi-user.target
