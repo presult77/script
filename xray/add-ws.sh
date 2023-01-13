@@ -92,6 +92,7 @@ echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee 
 echo -e "VIP Vmess Account" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
 echo -e "Username: ${user}" | tee -a /etc/log-create-user.log
+echo -e "Expired: $exp" | tee -a /etc/log-create-user.log
 echo -e "Domain: ${domain}" | tee -a /etc/log-create-user.log
 echo -e "Port: TLS (443), nTLS (80, 8080), gRPC (443)" | tee -a /etc/log-create-user.log
 echo -e "id: ${uuid}" | tee -a /etc/log-create-user.log

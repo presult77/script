@@ -37,6 +37,7 @@ echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee 
 echo -e "VIP TROJAN ACCOUNT" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
 echo -e "Username: ${user}" | tee -a /etc/log-create-user.log
+echo -e "Expired: $exp" | tee -a /etc/log-create-user.log
 echo -e "Domain: ${domain}" | tee -a /etc/log-create-user.log
 echo -e "Port: ${tr}" | tee -a /etc/log-create-user.log
 echo -e "Key: ${uuid}" | tee -a /etc/log-create-user.log
