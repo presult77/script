@@ -1,20 +1,20 @@
 #!/bin/bash
-rm /var/log/xray/access.log
-rm /var/log/xray/error.log
-systemctl restart xray
+rm /var/log/xray/access-vmess.log
+rm /var/log/xray/error-vmess.log
+systemctl restart vmess
 clear
 echo -e "[ ${green}INFO${NC} ] Waiting client connection"
-sleep 20
+sleep 30
 red='\e[1;31m'
 green='\e[0;32m'
 NC='\e[0m'
-ipp=$(cat /var/log/xray/access.log | grep email | awk '{print $3}' | cut -d: -f1 | tr -d 'tcp' | sort | uniq)
+ipp=$(cat /var/log/xray/access-vmess.log | grep email | awk '{print $3}' | cut -d: -f1 | tr -d 'tcp' | sort | uniq)
 cat > /root/ip.txt <<-END
 $ipp
 END
 clear
 echo -n > /tmp/other.txt
-data=(`cat /etc/xray/config.json | grep '^###' | cut -d ' ' -f 2 | column -t | sort | uniq`);
+data=(`cat /etc/xray/vmess.json | grep '^###' | cut -d ' ' -f 2 | column -t | sort | uniq`);
 echo "-------------------------------";
 echo "-----=[ Xray Vmess Login ]=-----";
 echo "-------------------------------";
@@ -27,7 +27,7 @@ echo -n > /tmp/ipvmess.txt
 data2=( `cat /root/ip.txt`);
 for ip in "${data2[@]}"
 do
-jum=$(cat /var/log/xray/access.log | grep -w $akun | awk '{print $3}' | cut -d: -f1 | grep -w $ip | sort | uniq)
+jum=$(cat /var/log/xray/access-vmess.log | grep -w $akun | awk '{print $3}' | cut -d: -f1 | grep -w $ip | sort | uniq)
 if [[ "$jum" = "$ip" ]]; then
 echo "$jum" >> /tmp/ipvmess.txt
 else

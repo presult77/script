@@ -7,7 +7,7 @@ NC='\e[0m'
 green() { echo -e "\\033[32;1m${*}\\033[0m"; }
 red() { echo -e "\\033[31;1m${*}\\033[0m"; }
 clear
-NUMBER_OF_CLIENTS=$(grep -c -E "^#& " "/etc/xray/config.json")
+NUMBER_OF_CLIENTS=$(grep -c -E "^#& " "/etc/xray/vless.json")
 	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
 		echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━\033[0m"
         echo -e "\E[44;1;39m     ⇱ Delete Vless Account ⇲     \E[0m"
@@ -24,16 +24,16 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^#& " "/etc/xray/config.json")
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo "  User       Expired  " 
 	echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━\033[0m"
-	grep -E "^#& " "/etc/xray/config.json" | cut -d ' ' -f 2-3 | column -t | sort | uniq
+	grep -E "^#& " "/etc/xray/vless.json" | cut -d ' ' -f 2-3 | column -t | sort | uniq
     echo ""
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━\033[0m"
 	read -rp "Input Username : " user
-    CLIENT_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
+    CLIENT_EXISTS=$(grep -w $user /etc/xray/vless.json | wc -l)
     if [[ ${CLIENT_EXISTS} == '0' ]]; then
     exit 1
     else
-    exp=$(grep -wE "^#& $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
-    sed -i "/^#& $user $exp/,/^},{/d" /etc/xray/config.json
+    exp=$(grep -wE "^#& $user" "/etc/xray/vless.json" | cut -d ' ' -f 3 | sort | uniq)
+    sed -i "/^#& $user $exp/,/^},{/d" /etc/xray/vless.json
     clear
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo " VLess Account Deleted Successfully"
@@ -42,5 +42,5 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^#& " "/etc/xray/config.json")
     echo " Expired On  : $exp"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo ""
-    at now -f /root/restart.sh
+    at now -f /root/restart-trojan.sh
     fi

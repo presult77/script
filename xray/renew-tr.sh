@@ -13,19 +13,19 @@ clear
 	read -rp "Input Username : " user
     read -p "Expired (days): " masaaktif
     
-    CLIENT_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
+    CLIENT_EXISTS=$(grep -w $user /etc/xray/trojan.json | wc -l)
 	if [[ ${CLIENT_EXISTS} == '0' ]]; then
 		exit
 	fi
 
-    exp=$(grep -wE "^#! $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
+    exp=$(grep -wE "^#! $user" "/etc/xray/trojan.json" | cut -d ' ' -f 3 | sort | uniq)
     now=$(date +%Y-%m-%d)
     d1=$(date -d "$exp" +%s)
     d2=$(date -d "$now" +%s)
     exp2=$(( (d1 - d2) / 86400 ))
     exp3=$(($exp2 + $masaaktif))
     exp4=`date -d "$exp3 days" +"%Y-%m-%d"`
-    sed -i "/#! $user/c\#! $user $exp4" /etc/xray/config.json
+    sed -i "/#! $user/c\#! $user $exp4" /etc/xray/trojan.json
     clear
     echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
     echo "Trojan Account Was Successfully Renewed" | tee -a /etc/log-create-user.log
@@ -36,4 +36,4 @@ clear
     echo "" | tee -a /etc/log-create-user.log
     echo "THANKS FOR USING OUR SERVICE" | tee -a /etc/log-create-user.log
     echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
-    at now -f /root/restart.sh
+    at now -f /root/restart-trojan.sh

@@ -20,20 +20,20 @@ clear
 	read -rp "Input Username : " user
     read -p "Expired (days): " masaaktif
 
-	CLIENT_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
+	CLIENT_EXISTS=$(grep -w $user /etc/xray/vmess.json | wc -l)
 	if [[ ${CLIENT_EXISTS} == '0' ]]; then
 		exit
 	fi
 	
-    exp=$(grep -E "^### $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
+    exp=$(grep -E "^### $user" "/etc/xray/vmess.json" | cut -d ' ' -f 3 | sort | uniq)
     now=$(date +%Y-%m-%d)
     d1=$(date -d "$exp" +%s)
     d2=$(date -d "$now" +%s)
     exp2=$(( (d1 - d2) / 86400 ))
     exp3=$(($exp2 + $masaaktif))
     exp4=`date -d "$exp3 days" +"%Y-%m-%d"`
-	sed -i "s/### $user $exp/### $user $exp4/g" /etc/xray/config.json
-	sed -i "s/### $user $exp/### $user $exp4/g" /etc/xray/config.json
+	sed -i "s/### $user $exp/### $user $exp4/g" /etc/xray/vmess.json
+	sed -i "s/### $user $exp/### $user $exp4/g" /etc/xray/vmess.json
 
 	clear
 	echo "" | tee -a /etc/log-create-user.log
@@ -44,4 +44,4 @@ clear
 	echo "Expired   : $exp4" | tee -a /etc/log-create-user.log
 	echo "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
 	echo "THANKS FOR USING OUR SERVICE" | tee -a /etc/log-create-user.log
-	at now -f /root/restart.sh
+	at now -f /root/restart-vmess.sh

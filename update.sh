@@ -1,8 +1,9 @@
 #!/bin/bash
-cd /root
-rm restart.sh
-wget -O restart.sh "https://raw.githubusercontent.com/presult77/script/main/xray/restart.sh" && chmod +x restart.sh
+
 cd /usr/local/sbin/
+rm update
+wget -O update "https://raw.githubusercontent.com/presult77/script/main/update.sh" && chmod +x update
+
 # vmess
 rm /usr/local/sbin/add-ws
 rm /usr/local/sbin/trialvmess
@@ -39,5 +40,12 @@ wget -O del-tr "https://raw.githubusercontent.com/presult77/script/main/xray/del
 wget -O renew-tr "https://raw.githubusercontent.com/presult77/script/main/xray/renew-tr.sh" && chmod +x renew-tr
 wget -O cek-tr "https://raw.githubusercontent.com/presult77/script/main/xray/cek-tr.sh" && chmod +x cek-tr
 wget -O menu "https://raw.githubusercontent.com/presult77/script/main/menu/menu.sh" && chmod +x menu
+
+cd /root
+#restart
+rm restart.sh
+wget -O restart-trojan.sh "https://raw.githubusercontent.com/presult77/script/main/xray/restart-trojan.sh" && chmod +x restart-trojan.sh
+wget -O restart-vmess.sh "https://raw.githubusercontent.com/presult77/script/main/xray/restart-vmess.sh" && chmod +x restart-vmess.sh
+wget -O restart-vless.sh "https://raw.githubusercontent.com/presult77/script/main/xray/restart-vless.sh" && chmod +x restart-vless.sh
 
 ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
