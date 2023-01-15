@@ -212,8 +212,10 @@ netfilter-persistent reload
 
 # download script
 cd /root
-rm restart.sh
-wget -O restart.sh "https://raw.githubusercontent.com/presult77/script/main/xray/restart.sh" && chmod +x restart.sh
+wget -O restart-trojan.sh "https://raw.githubusercontent.com/presult77/script/main/xray/restart-trojan.sh" && chmod +x restart-trojan.sh
+wget -O restart-vmess.sh "https://raw.githubusercontent.com/presult77/script/main/xray/restart-vmess.sh" && chmod +x restart-vmess.sh
+wget -O restart-vless.sh "https://raw.githubusercontent.com/presult77/script/main/xray/restart-vless.sh" && chmod +x restart-vless.sh
+
 cd /usr/local/sbin/
 # menu
 wget -O menu "https://raw.githubusercontent.com/presult77/script/main/menu/menu.sh"
