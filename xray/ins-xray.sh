@@ -86,7 +86,7 @@ mkdir -p /home/vps/public_html
 uuid=$(cat /proc/sys/kernel/random/uuid)
 
 # trojan config
-cat > /etc/xray/config.json << END
+cat > /etc/xray/trojan.json << END
 {
     "log" : {
       "access": "/var/log/xray/access-trojan.log",
@@ -210,11 +210,11 @@ cat > /etc/xray/config.json << END
 END
 
 # vmess config
-cat > /etc/xray/config.json << END
+cat > /etc/xray/vmess.json << END
 {
     "log" : {
-      "access": "/var/log/xray/access.log",
-      "error": "/var/log/xray/error.log",
+      "access": "/var/log/xray/access-vmess.log",
+      "error": "/var/log/xray/error-vmess.log",
       "loglevel": "warning"
     },
     "inbounds": [
@@ -333,11 +333,11 @@ cat > /etc/xray/config.json << END
 END
 
 # vless config
-cat > /etc/xray/config.json << END
+cat > /etc/xray/vless.json << END
 {
     "log" : {
-      "access": "/var/log/xray/access.log",
-      "error": "/var/log/xray/error.log",
+      "access": "/var/log/xray/access-vless.log",
+      "error": "/var/log/xray/error-vless.log",
       "loglevel": "warning"
     },
     "inbounds": [
