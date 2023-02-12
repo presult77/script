@@ -96,7 +96,7 @@ cat > /etc/xray/trojan.json << END
     "inbounds": [
         {
         "listen": "127.0.0.1",
-        "port": 10085,
+        "port": 11111,
         "protocol": "dokodemo-door",
         "settings": {
           "address": "127.0.0.1"
@@ -220,7 +220,7 @@ cat > /etc/xray/vmess.json << END
     "inbounds": [
         {
         "listen": "127.0.0.1",
-        "port": 10085,
+        "port": 22222,
         "protocol": "dokodemo-door",
         "settings": {
           "address": "127.0.0.1"
@@ -343,7 +343,7 @@ cat > /etc/xray/vless.json << END
     "inbounds": [
         {
         "listen": "127.0.0.1",
-        "port": 10085,
+        "port": 33333,
         "protocol": "dokodemo-door",
         "settings": {
           "address": "127.0.0.1"
@@ -661,6 +661,22 @@ systemctl restart vless
 systemctl restart nginx
 systemctl enable runn
 systemctl restart runn
+
+# tweaking
+echo "* soft nproc 1048576" >> /etc/security/limits.conf
+echo "* hard nproc 1048576" >> /etc/security/limits.conf
+echo "* soft nofile 1048576" >> /etc/security/limits.conf
+echo "* hard nofile 1048576" >> /etc/security/limits.conf
+echo "www-data soft nproc 1048576" >> /etc/security/limits.conf
+echo "www-data hard nproc 1048576" >> /etc/security/limits.conf
+echo "www-data soft nofile 1048576" >> /etc/security/limits.conf
+echo "www-data hard nofile 1048576" >> /etc/security/limits.conf
+echo "root soft nproc 1048576" >> /etc/security/limits.conf
+echo "root hard nproc 1048576" >> /etc/security/limits.conf
+echo "root soft nofile 1048576" >> /etc/security/limits.conf
+echo "root hard nofile 1048576" >> /etc/security/limits.conf
+echo "fs.file-max = 1048576" >> /etc/sysctl.conf
+sudo sysctl -p
 
 cd /usr/local/sbin/
 # vmess
