@@ -20,9 +20,7 @@ uuid=$(cat /proc/sys/kernel/random/uuid)
 read -p "Expired (days): " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#trojanws/a\#! '"$user $exp"'\
-},{"password": "'""$uuid""'","email": "'""$user-ws""'"' /etc/xray/trojan.json
-sed -i '/#trojangrpc/a\#! '"$user $exp"'\
-},{"password": "'""$uuid""'","email": "'""$user-grpc""'"' /etc/xray/trojan.json
+},{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/trojan.json
 
 trojanlink1="trojan://${uuid}@${domain}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=${domain}#${user}"
 trojanlink="trojan://${uuid}@${domain}:${tr}?path=%2Ftrojan-ws&security=tls&host=${domain}&type=ws&sni=${domain}#${user}"
