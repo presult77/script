@@ -557,6 +557,7 @@ systemctl restart vless
 systemctl restart nginx
 systemctl enable runn
 systemctl restart runn
+systemctl disable xray
 
 # tweaking
 echo "* soft nproc 1048576" >> /etc/security/limits.conf
