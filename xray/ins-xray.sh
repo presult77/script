@@ -252,7 +252,7 @@ cat > /etc/xray/vmess.json << END
         "settings": {
               "clients": [
                  {
-                   "id": ""${uuid}",
+                   "id": "${uuid}",
                    "alterId": 0
 #vmessgrpc
                }
