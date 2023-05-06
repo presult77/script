@@ -20,10 +20,7 @@ uuid=$(cat /proc/sys/kernel/random/uuid)
 read -p "Expired (days): " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#vmess/a\### '"$user $exp"'\
-},{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user-ws""'"' /etc/xray/vmess.json
-exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
-sed -i '/#vmessgrpc/a\### '"$user $exp"'\
-},{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user-grpc""'"' /etc/xray/vmess.json
+},{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/vmess.json
 acs=`cat<<EOF
       {
       "v": "2",
