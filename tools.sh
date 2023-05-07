@@ -27,12 +27,9 @@ sudo apt-get remove --purge exim4 -y
 
 sudo apt install -y screen curl gzip coreutils rsyslog iftop \
  htop zip unzip net-tools sed \
- bc sudo build-essential lsof \
+ sudo build-essential lsof \
  openssl easy-rsa fail2ban tmux \
  dbus vnstat \
-
-curl -sSL https://deb.nodesource.com/setup_16.x | bash - 
-sudo apt-get install nodejs -y
 
 fi
 
