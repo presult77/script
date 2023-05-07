@@ -152,7 +152,7 @@ tls on
 tls_starttls on
 tls_trust_file /etc/ssl/certs/ca-certificates.crt
 account default
-host mail.naravpn.com
+host s576.sgp7.mysecurecloudhost.com
 port 587
 auth on
 user admin@naravpn.com
