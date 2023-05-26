@@ -37,8 +37,6 @@ secs_to_human() {
 }
 start=$(date +%s)
 ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
-sysctl -w net.ipv6.conf.all.disable_ipv6=1 >/dev/null 2>&1
-sysctl -w net.ipv6.conf.default.disable_ipv6=1 >/dev/null 2>&1
 
 coreselect=''
 cat> /root/.profile << END
@@ -195,7 +193,6 @@ echo "   - Fail2Ban		: [ON]"  | tee -a log-install.txt
 echo "   - Dflate		: [ON]"  | tee -a log-install.txt
 echo "   - IPtables		: [ON]"  | tee -a log-install.txt
 echo "   - Auto-Reboot		: [ON]"  | tee -a log-install.txt
-echo "   - IPv6			: [OFF]"  | tee -a log-install.txt
 echo "   - Autoreboot On	: $aureb:00 $gg GMT +08" | tee -a log-install.txt
 echo "   - AutoKill Multi Login User" | tee -a log-install.txt
 echo "   - Auto Delete Expired Account" | tee -a log-install.txt
