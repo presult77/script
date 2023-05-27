@@ -111,6 +111,7 @@ apt -y install nginx
 cd
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
+rm /etc/nginx/
 wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/presult77/script/main/ssh/nginx.conf"
 mkdir -p /home/vps/public_html
 /etc/init.d/nginx restart
