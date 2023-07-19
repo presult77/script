@@ -63,10 +63,6 @@ echo -ne "[ ${green}INFO${NC} ] Check permission : "
 mkdir -p /var/lib/SIJA >/dev/null 2>&1
 echo "IP=" >> /var/lib/SIJA/ipvps.conf
 
-#disableipv6
-echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
-sed -i '$ i\echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
-
 echo ""
 wget -q https://raw.githubusercontent.com/presult77/script/main/tools.sh;chmod +x tools.sh;./tools.sh
 rm tools.sh
