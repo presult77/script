@@ -29,7 +29,7 @@ sudo apt install -y screen curl gzip coreutils rsyslog iftop \
  htop zip unzip net-tools sed \
  sudo build-essential lsof \
  openssl easy-rsa fail2ban tmux \
- dbus vnstat \
+ dbus vnstat socat\
 
 fi
 
