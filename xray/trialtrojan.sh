@@ -36,6 +36,7 @@ echo -e "Domain: ${domain}" | tee -a /etc/log-create-user.log
 echo -e "Port: ${tr}" | tee -a /etc/log-create-user.log
 echo -e "Key: ${uuid}" | tee -a /etc/log-create-user.log
 echo -e "Path: /trojan-ws" | tee -a /etc/log-create-user.log
+echo -e "Path GRPC: trojan-grpc" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
 echo -e "Link WS : ${trojanlink}" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
