@@ -11,7 +11,7 @@ sleep 1
 echo -e "[ ${green}INFO$NC ] Setting dll"
 apt clean all && apt update
 apt install zip -y
-apt install curl cron -y
+apt install curl cron socat -y
 
 
 # install xray
