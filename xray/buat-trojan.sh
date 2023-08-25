@@ -27,7 +27,7 @@ sed -i '/#trojangrpc/a\#! '"$user $exp"'\
 trojanlink1="trojan://${uuid}@${domain}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=${domain}#${user}"
 trojanlink="trojan://${uuid}@${domain}:${tr}?path=%2Ftrojan-ws&security=tls&host=${domain}&type=ws&sni=${domain}#${user}"
 clear
-cat > /home/vps/public_html/akun/${uuid}.txt << END
+cat > /home/vps/public_html/trojan/${uuid}.txt << END
 "====================="
 "AKUN TROJAN VIP BANDWITH"
 "====================="
