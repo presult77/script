@@ -56,4 +56,4 @@ echo -e
 echo -e "Kontak Admin: t.me/rumahvpn_admin"
 echo -e "Channel Telegram: t.me/rumahvpn_channel "
 echo -e "====================="
-at now -f /root/restart-trojan.sh
+systemctl restart trojan
