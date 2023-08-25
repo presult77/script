@@ -28,9 +28,9 @@ trojanlink1="trojan://${uuid}@${domain}:${tr}?mode=gun&security=tls&type=grpc&se
 trojanlink="trojan://${uuid}@${domain}:${tr}?path=%2Ftrojan-ws&security=tls&host=${domain}&type=ws&sni=${domain}#${user}"
 clear
 cat > /home/vps/public_html/akun/${uuid}.txt << END
-"━━━━━━━━━━━━━━━━━━━━━"
+"====================="
 "VIP TROJAN ACCOUNT"
-"━━━━━━━━━━━━━━━━━━━━━"
+"====================="
 "Username: ${user}"
 "Expired: $exp"
 "Domain: ${domain}"
@@ -38,16 +38,20 @@ cat > /home/vps/public_html/akun/${uuid}.txt << END
 "Key: ${uuid}"
 "Path: /trojan-ws"
 "Path GRPC: trojan-grpc"
-"━━━━━━━━━━━━━━━━━━━━━"
+"====================="
 "Link WS : ${trojanlink}"
-"━━━━━━━━━━━━━━━━━━━━━"
+"====================="
 "Link GRPC : ${trojanlink1}"
-"━━━━━━━━━━━━━━━━━━━━━"
+"====================="
 "THANKS FOR USING OUR SERVICE"
 END
-echo -e "━━━━━━━━━━━━━━━━━━━━━"
+echo -e "====================="
 echo -e "Terimakasih atas pembelian anda"
-echo -e "Link akun: https://${domain}:81/akun/${uuid}.txt"
-echo -e "Jika ada problem, hubungi admin @rumahvpn_admin"
-echo -e "━━━━━━━━━━━━━━━━━━━━━"
+echo -e
+echo -e "AKUN TROJAN VIP"
+echo -e "Link Akun: http://${domain}:81/trojan/${uuid}.txt"
+echo -e
+echo -e "Kontak Admin: t.me/rumahvpn_admin"
+echo -e "Channel Telegram: t.me/rumahvpn_channel "
+echo -e "====================="
 at now -f /root/restart-trojan.sh
