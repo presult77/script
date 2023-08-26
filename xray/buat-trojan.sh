@@ -45,15 +45,16 @@ cat > /home/vps/public_html/trojan/${uuid}.txt << END
 "====================="
 "TERIMAKASIH ATAS PEMBELIANNYA"
 END
-echo -e "====================="
-echo -e "Terimakasih atas pembelian anda"
-echo -e "====================="
-echo -e "AKUN TROJAN VIP BANDWITH"
-echo -e "Server: ${domain}"
-echo -e "Expire: $exp"
-echo -e "Link Akun: http://${domain}:81/trojan/${uuid}.txt"
-echo -e "====================="
-echo -e "Kontak Admin: t.me/rumahvpn_admin"
-echo -e "Channel Telegram: t.me/rumahvpn_channel "
-echo -e "====================="
+echo -e =====================
+echo -e Terimakasih atas pembelian anda
+echo -e =====================
+echo -e AKUN TROJAN VIP BANDWITH
+echo -e =====================
+echo -e Server: ${domain}
+echo -e Expire: $exp
+echo -e Link Akun: http://${domain}:81/trojan/${uuid}.txt
+echo -e =====================
+echo -e Kontak Admin: t.me/rumahvpn_admin
+echo -e Channel Telegram: t.me/rumahvpn_channel
+echo -e =====================
 systemctl restart trojan
