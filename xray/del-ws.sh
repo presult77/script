@@ -52,7 +52,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/vmess.json")
 	echo "Username  : $user"
 	echo "Expired   : $exp"
 	echo "==============================="
-	echo "Script By NARAVPN"
+	echo "Regards"
 	sleep 1
 	at now -f /root/restart-vmess.sh
 	fi

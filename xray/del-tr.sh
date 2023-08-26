@@ -37,6 +37,6 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^#! " "/etc/xray/trojan.json")
     echo " Client Name : $user"
     echo " Expired On  : $exp"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo "NARAVPN"
+    echo "Regards"
     at now -f /root/restart-trojan.sh
     fi
