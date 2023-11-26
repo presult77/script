@@ -42,5 +42,5 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^#& " "/etc/xray/vless.json")
     echo " Expired On  : $exp"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo ""
-    at now -f /root/restart-trojan.sh
+    at now -f /root/restart-vless.sh
     fi
