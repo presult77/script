@@ -42,6 +42,7 @@ wget -O cek-tr "https://raw.githubusercontent.com/presult77/script/main/xray/cek
 wget -O menu "https://raw.githubusercontent.com/presult77/script/main/menu/menu.sh" && chmod +x menu
 
 #totaluser
+rm /usr/local/sbin/user
 wget -O user "https://raw.githubusercontent.com/presult77/script/main/xray/user.sh" && chmod +x user
 
 cd /root
