@@ -155,7 +155,7 @@ port 587
 auth on
 user admin@naravpn.com
 from admin@naravpn.com
-password Peciajaib752##
+password hide
 logfile ~/.msmtp.log
 EOF
 
