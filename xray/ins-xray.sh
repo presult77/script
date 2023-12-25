@@ -582,6 +582,12 @@ yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
 yellow "xray/Vmess"
 yellow "xray/Vless"
 
+cd /usr/local/bin/xray
+rm geosite.dat
+wget https://github.com/malikshi/v2ray-rules-dat/releases/latest/download/geosite.dat
+wget https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip-asn.dat
+cd
+
 mv /root/domain /etc/xray/ 
 if [ -f /root/scdomain ];then
 rm /root/scdomain > /dev/null 2>&1
