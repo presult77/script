@@ -584,6 +584,8 @@ yellow "xray/Vless"
 
 cd /usr/local/share/xray/
 rm geosite.dat
+rm geoip.dat
+wget https://github.com/malikshi/v2ray-rules-dat/releases/latest/download/geoip.dat
 wget https://github.com/malikshi/v2ray-rules-dat/releases/latest/download/geosite.dat
 wget https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip-asn.dat
 cd
