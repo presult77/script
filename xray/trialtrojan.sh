@@ -28,7 +28,7 @@ trojanlink1="trojan://${uuid}@${domain}:${tr}?mode=gun&security=tls&type=grpc&se
 trojanlink="trojan://${uuid}@${domain}:${tr}?path=%2Ftrojan-ws&security=tls&host=${domain}&type=ws&sni=${domain}#${user}"
 clear
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
-echo -e "TRIAL 30 Minutes TROJAN ACCOUNT" | tee -a /etc/log-create-user.log
+echo -e "TRIAL 60 Minutes TROJAN ACCOUNT" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
 echo -e "Username: ${user}" | tee -a /etc/log-create-user.log
 echo -e "Expired: $exp" | tee -a /etc/log-create-user.log
