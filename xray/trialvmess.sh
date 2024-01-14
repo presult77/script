@@ -79,7 +79,7 @@ vmesslink3="vmess://$(echo $grpc | base64 -w 0)"
 
 clear
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
-echo -e "Trial 30 Minutes Vmess Account" | tee -a /etc/log-create-user.log
+echo -e "Trial 60 Minutes Vmess Account" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
 echo -e "Username: ${user}" | tee -a /etc/log-create-user.log
 echo -e "Expired: $exp" | tee -a /etc/log-create-user.log
