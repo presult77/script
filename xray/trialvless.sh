@@ -29,7 +29,7 @@ vlesslink3="vless://${uuid}@${domain}:$tls?mode=gun&security=tls&encryption=none
 
 clear
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
-echo -e "Trial 30 Minutes Vless Account" | tee -a /etc/log-create-user.log
+echo -e "Trial 60 Minutes Vless Account" | tee -a /etc/log-create-user.log
 echo -e "━━━━━━━━━━━━━━━━━━━━━" | tee -a /etc/log-create-user.log
 echo -e "Username: ${user}" | tee -a /etc/log-create-user.log
 echo -e "Expired: $exp" | tee -a /etc/log-create-user.log
