@@ -150,12 +150,12 @@ tls on
 tls_starttls on
 tls_trust_file /etc/ssl/certs/ca-certificates.crt
 account default
-host s576.sgp7.mysecurecloudhost.com
+host smtp.gmail.com
 port 587
 auth on
 user admin@naravpn.com
 from admin@naravpn.com
-password hide
+password sembunyi
 logfile ~/.msmtp.log
 EOF
 
