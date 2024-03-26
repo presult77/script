@@ -153,8 +153,8 @@ account default
 host smtp.gmail.com
 port 587
 auth on
-user admin@naravpn.com
-from admin@naravpn.com
+user admin@gmail.com
+from admin@gmail.com
 password sembunyi
 logfile ~/.msmtp.log
 EOF
