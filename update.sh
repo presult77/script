@@ -51,6 +51,7 @@ wget -O checkservice "https://raw.githubusercontent.com/presult77/script/main/ch
 chmod +x checkservice
 sudo sed -i '/^#.*checkservice/d' /etc/crontab
 echo '*/5 * * * * root /usr/local/sbin/checkservice' | sudo tee -a /etc/crontab
+service cron restart
 
 cd /root
 #restart
