@@ -45,6 +45,13 @@ wget -O menu "https://raw.githubusercontent.com/presult77/script/main/menu/menu.
 rm /usr/local/sbin/user
 wget -O user "https://raw.githubusercontent.com/presult77/script/main/xray/user.sh" && chmod +x user
 
+#checkservice
+cd /usr/local/sbin
+wget -O checkservice "https://raw.githubusercontent.com/presult77/script/main/checkservice.sh"
+chmod +x checkservice
+sudo sed -i '/^#.*checkservice/d' /etc/crontab
+echo '*/5 * * * * root /usr/local/sbin/checkservice' | sudo tee -a /etc/crontab
+
 cd /root
 #restart
 rm restart.sh
