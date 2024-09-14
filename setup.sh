@@ -165,10 +165,15 @@ wget -O autobackup "https://raw.githubusercontent.com/presult77/script/main/back
 wget -O backup "https://raw.githubusercontent.com/presult77/script/main/backup/backup.sh"
 wget -O bckp "https://raw.githubusercontent.com/presult77/script/main/backup/bckp.sh"
 wget -O restore "https://raw.githubusercontent.com/presult77/script/main/backup/restore.sh"
+wget -O checkservice "https://raw.githubusercontent.com/presult77/script/main/checkservice.sh"
 chmod +x autobackup
 chmod +x backup
 chmod +x bckp
 chmod +x restore
+chmod +x checkservice
+sudo sed -i '/^#.*checkservice/d' /etc/crontab
+echo '*/5 * * * * root /usr/local/sbin/checkservice' | sudo tee -a /etc/crontab
+
 cd
 #endbackup
 echo " "
